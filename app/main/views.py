@@ -3,11 +3,16 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("<h1>Главная страница</h1>")
+    return render(request, template_name='main/index.html')
+
 
 def about(request):
-    return HttpResponse("<h1>О нас</h1>")
+    return render(request, template_name='main/about.html')
 
 
 def contact(request):
-    return HttpResponse("<h1>Контакты</h1>")
+    return render(request, template_name='main/contact.html')
+
+def news(request):
+    return render(request, template_name='main/news.html')
+
