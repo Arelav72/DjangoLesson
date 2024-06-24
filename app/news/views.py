@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import News_post
+from .forms import News_postForm
 
 
 def index(request):
@@ -7,3 +8,15 @@ def index(request):
     return render(request, 'news/new.html', {'news': news})
 
 
+def create_news(request):
+    error = ''
+    if request.method == 'POST':
+        form = News_postForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('new_index')
+        else:
+            error = 'Данные были  заполнены не корректно'
+
+    form = News_postForm()
+    return render(request, 'news/add_new_post.html', {'form': form, 'errors': error})

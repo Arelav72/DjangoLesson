@@ -1,0 +1,52 @@
+{% extends 'main/base.html'%}
+
+
+{% block title%}
+
+<title>Страница для добавления новостей</title>
+
+{% endblock %}
+
+{% block content %}
+
+  <h1>Страница для добавления новостей</h1>
+
+<div class="container">
+    <h2>Форма для добавления новостей</h2>
+     <div class="container mt-5">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+
+
+                {{ form.short_description }}
+            </div>
+            <div class="mb-3">
+
+
+                {{ form.text }}
+            </div>
+            <div class="mb-3">
+
+
+                {{ form.pub_date }}
+            </div>
+
+            <div class="mb-3">
+
+
+                {{ form.author }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавить новость</button>
+        </form>
+         <p>{{error}}</p>
+    </div>
+
+</div>
+{% endblock %}
